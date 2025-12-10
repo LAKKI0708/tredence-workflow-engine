@@ -30,6 +30,7 @@ A sample **text summarization workflow** is included to demonstrate the engine.
 ---
 
 ## 📦 Project Structure
+```
 app/
 │── main.py               → FastAPI endpoints
 │── engine.py             → Core workflow/graph engine
@@ -40,7 +41,7 @@ app/
 │
 README.md
 requirements.txt
-
+```
 ## 🧪 Running the Project
 ### 1️⃣ Install dependencies
 pip install -r requirements.txt
