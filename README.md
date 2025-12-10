@@ -1,40 +1,35 @@
-AI Workflow / Graph Engine (FastAPI) – Internship Assignment
+# AI Workflow / Graph Engine (FastAPI) – Internship Assignment
 
-This project implements a minimal workflow / graph execution engine using Python and FastAPI.
-It supports nodes, edges, shared state transitions, branching, and looping.
-A sample text summarization workflow is included to demonstrate the engine.
+This project implements a minimal **workflow / graph execution engine** using Python and FastAPI.  
+It supports **nodes**, **edges**, **shared state transitions**, **branching**, and **looping**.  
+A sample **text summarization workflow** is included to demonstrate the engine.
 
-🚀 Features
+---
 
-Graph-based execution
+## 🚀 Features
 
-Each node is a Python function
+- **Graph-based execution**
+  - Each node is a Python function  
+  - Shared state dictionary passed between nodes  
+  - Edges define execution flow  
 
-Shared state dictionary passed between nodes
+- **Branching**
+  - Nodes can override the next step via `state["next_node"]`
 
-Edges define execution flow
+- **Looping**
+  - Engine continues until no next node is set
 
-Branching
+- **Execution logs**
+  - Tracks the sequence of executed nodes
 
-Nodes can override the next step using state["next_node"]
+- **FastAPI endpoints**
+  - Create workflow graphs  
+  - Run workflow graphs  
+  - Retrieve workflow state
 
-Looping
+---
 
-Engine continues until no next node exists
-
-Execution logs
-
-Shows the order of node execution
-
-FastAPI endpoints
-
-Create workflow graphs
-
-Run workflow graphs
-
-Check workflow state
-
-📦 Project Structure
+## 📦 Project Structure
 app/
 │── main.py               → FastAPI endpoints
 │── engine.py             → Core workflow/graph engine
@@ -46,34 +41,37 @@ app/
 README.md
 requirements.txt
 
-🧪 Running the Project
-1️⃣ Install dependencies
+## 🧪 Running the Project
+### 1️⃣ Install dependencies
 pip install -r requirements.txt
 
-2️⃣ Start FastAPI server
+### 2️⃣ Start FastAPI server
 uvicorn app.main:app --reload
 
-3️⃣ Open API documentation
+### 3️⃣ Open API documentation
 http://127.0.0.1:8000
 
 
-(✨ The root path automatically redirects to /docs.)
 
-🧠 API Endpoints
-POST /graph/create
+✨ The root path automatically redirects to `/docs`.
 
-Register a new workflow graph.
+---
 
-POST /graph/run
+## 🧠 API Endpoints
 
-Run a workflow with an initial state.
+| Endpoint | Description |
+|---------|-------------|
+| `POST /graph/create` | Register a new workflow graph |
+| `POST /graph/run` | Run a workflow with an initial state |
+| `GET /graph/state/{run_id}` | Retrieve final state and execution log |
 
-GET /graph/state/{run_id}
+---
 
-Retrieve final state and execution log of a workflow.
+## 📝 Example Workflow (Summarization)
 
-📝 Example Workflow (Summarization)
-Create Workflow
+### Create Workflow
+
+```json
 {
   "nodes": {
     "split_chunks": "split text",
@@ -90,7 +88,11 @@ Create Workflow
   "start_node": "split_chunks"
 }
 
-Run Workflow
+```
+
+### Run Workflow
+
+```json
 {
   "graph_id": "your_graph_id_here",
   "initial_state": {
@@ -99,8 +101,11 @@ Run Workflow
     "chunk_size": 300
   }
 }
+```
 
-Example Output
+### Example Output
+
+```json
 {
   "final_state": {
     "text": "This is a long article that needs to be summarized...",
@@ -127,21 +132,18 @@ Example Output
     "END:refine"
   ]
 }
+```
 
-🛠 Technologies Used
+## 🛠 Technologies Used
 
-Python
+- Python
+- FastAPI
+- Uvicorn
+- Pydantic
 
-FastAPI
+## 🧩 Notes
 
-Uvicorn
-
-Pydantic
-
-🧩 Notes
-
-LLMs were not required for this assignment; summarization is rule-based.
-
-The engine is designed to support any workflow by supplying node functions.
-
-The root route (/) redirects to /docs for ease of use.
+- The summarization workflow included here is a simple rule-based example to demonstrate node execution.
+- The workflow engine is generic and can support any custom workflow by defining node functions and edges.
+- The root route (`/`) automatically redirects to `/docs` for easier access to the API documentation.
+- Graphs and runs are stored in memory for simplicity (suitable for assignment/demo purposes).
