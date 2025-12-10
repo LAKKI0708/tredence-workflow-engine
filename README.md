@@ -39,7 +39,7 @@ app/
 │── main.py               → FastAPI endpoints
 │── engine.py             → Core workflow/graph engine
 │── models.py             → Request/response models
-│── tools.py              → Helper text-processing utilities
+│── tools.py              → Helper utilities
 │── workflows/
 │     └── summarization.py → Example summarization workflow
 │
@@ -54,19 +54,15 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 
 3️⃣ Open API documentation
-
-Start the server and open:
-
 http://127.0.0.1:8000
 
 
-(🔁 The root path automatically redirects to /docs.)
+(✨ The root path automatically redirects to /docs.)
 
 🧠 API Endpoints
 POST /graph/create
 
 Register a new workflow graph.
-Nodes are mapped to internal Python functions.
 
 POST /graph/run
 
@@ -74,7 +70,7 @@ Run a workflow with an initial state.
 
 GET /graph/state/{run_id}
 
-Fetch the final state and execution log.
+Retrieve final state and execution log of a workflow.
 
 📝 Example Workflow (Summarization)
 Create Workflow
@@ -146,6 +142,6 @@ Pydantic
 
 LLMs were not required for this assignment; summarization is rule-based.
 
-The engine is generic and can support any workflow by supplying node functions.
+The engine is designed to support any workflow by supplying node functions.
 
-The root route (/) automatically redirects to /docs for convenience.
+The root route (/) redirects to /docs for ease of use.
