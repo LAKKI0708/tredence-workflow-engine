@@ -29,7 +29,7 @@ A sample **text summarization workflow** is included to demonstrate the engine.
 
 ---
 
-## 📦 Project Structure
+##  Project Structure
 ```
 app/
 │── main.py               → FastAPI endpoints
@@ -42,7 +42,7 @@ app/
 README.md
 requirements.txt
 ```
-## 🧪 Running the Project
+##  Running the Project
 ### 1️⃣ Install dependencies
 pip install -r requirements.txt
 
@@ -68,7 +68,7 @@ http://127.0.0.1:8000
 
 ---
 
-## 📝 Example Workflow (Summarization)
+##  Example Workflow (Summarization)
 
 ### Create Workflow
 
