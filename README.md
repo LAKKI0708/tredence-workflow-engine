@@ -1,4 +1,4 @@
-# AI Workflow / Graph Engine (FastAPI) – Internship Assignment
+# Workflow / Graph Engine (FastAPI)
 
 This project implements a minimal **workflow / graph execution engine** using Python and FastAPI.  
 It supports **nodes**, **edges**, **shared state transitions**, **branching**, and **looping**.  
